@@ -22,7 +22,7 @@ public class StarGame extends ApplicationAdapter {
 	public void render () {
 		ScreenUtils.clear(1, 0, 0, 1);
 		batch.begin();
-		batch.draw(img, 0, 0, 680, 480);
+		batch.draw(img, 0, 0, 670, 480);
 		batch.end();
 	}
 	
