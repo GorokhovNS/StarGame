@@ -3,6 +3,7 @@ package screen;
 import base.BaseScreen;
 import math.Rect;
 import sprite.Background;
+import sprite.Logo;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,38 +12,54 @@ import com.badlogic.gdx.math.Vector2;
 public class MenuScreen extends BaseScreen {
     private Background background;
     private Texture bg;
+    private Texture img;
+    private Logo logo;
     private Vector2 pos;
 
     @Override
     public void show() {
         super.show();
         bg = new Texture("planet-earth-in-space.jpg");
+        img = new Texture("badlogic.jpg");
         background = new Background(bg);
-        pos = new Vector2();
+        logo = new Logo(img);
     }
 
     @Override
     public void resize(Rect worldBounds) {
         background.resize(worldBounds);
+        logo.resize(worldBounds);
     }
 
     @Override
     public void render(float delta) {
         super.render(delta);
-        batch.begin();
-        background.draw(batch);
-        batch.end();
+update(delta);
+draw();
     }
 
     @Override
     public void dispose() {
         super.dispose();
         bg.dispose();
+        img.dispose();
     }
 
     @Override
     public boolean touchDown(Vector2 touch, int pointer, int button) {
-        return super.touchDown(touch, pointer, button);
+        logo.touchDown(touch, pointer, button);
+        return false;
+    }
+
+    private void update(float delta) {
+logo.update(delta);
+    }
+
+    private void draw() {
+        batch.begin();
+        background.draw(batch);
+        logo.draw(batch);
+        batch.end();
     }
 }
 
