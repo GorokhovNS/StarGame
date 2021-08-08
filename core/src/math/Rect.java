@@ -1,4 +1,4 @@
-package ru.gb.math;
+package math;
 
 import com.badlogic.gdx.math.Vector2;
 
