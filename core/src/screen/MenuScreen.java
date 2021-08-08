@@ -9,10 +9,6 @@ public class MenuScreen extends BaseScreen {
     private Texture background;
     private Texture img;
     private Vector2 pos;
-    private Vector2 v;
-    private Vector2 newPos;
-    private Vector2 direction;
-    private final int SPEED = 5;
 
     @Override
     public void show() {
@@ -20,9 +16,7 @@ public class MenuScreen extends BaseScreen {
         background = new Texture("planet-earth-in-space.jpg");
         img = new Texture("badlogic.jpg");
         pos = new Vector2();
-        v = new Vector2();
-        direction = new Vector2();
-        newPos = new Vector2();
+        batch.getProjectionMatrix().idt();
     }
 
     @Override
@@ -30,12 +24,8 @@ public class MenuScreen extends BaseScreen {
         super.render(delta);
         batch.begin();
         batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        batch.draw(img, pos.x, pos.y);
+        batch.draw(img, pos.x, pos.y, 1f, 1f);
         batch.end();
-        direction.set(newPos).sub(pos).nor();
-        v.set(direction).scl(SPEED);
-        pos.add(v);
-
     }
 
     @Override
@@ -47,14 +37,7 @@ public class MenuScreen extends BaseScreen {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        newPos.set(screenX, Gdx.graphics.getHeight() - screenY);
-        return super.touchDown(screenX, screenY, pointer, button);
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        pos.set(screenX, Gdx.graphics.getHeight() - screenY);
-        return super.touchDragged(screenX, screenY, pointer);
+        return false;
     }
 }
 
