@@ -17,6 +17,10 @@ public class Sprite extends Rect {
         regions[0] = region;
     }
 
+    public Sprite(TextureRegion region, int rows, int cols, int frame) {
+        regions = utils.Regions.split(region, rows, cols,frame);
+    }
+
     public void setHeightProportion(float height) {
         setHeight(height);
         float aspect = regions[frame].getRegionWidth() / (float) regions[frame].getRegionHeight();
