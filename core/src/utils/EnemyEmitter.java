@@ -105,9 +105,9 @@ public class EnemyEmitter {
                         ENEMY_BIG_HP
                 );
             }
-            enemy.pos.x = Rnd.nextFloat(worldBounds.getLeft() + enemy.getHalfWidth(),
+             float posX = Rnd.nextFloat(worldBounds.getLeft() + enemy.getHalfWidth(),
                     worldBounds.getRight() - enemy.getHalfWidth());
-            enemy.setBottom(worldBounds.getTop());
+            enemy.setPos(posX, worldBounds.getTop());
         }
     }
 }
